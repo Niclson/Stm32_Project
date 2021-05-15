@@ -1,0 +1,37 @@
+
+#include "main.h"
+
+void SysClock_Init(void) {
+	RCC->CR   |= RCC_CR_HSEON;
+	RCC->CFGR |= RCC_CFGR_SW_HSE;
+	while((RCC->CFGR & RCC_CFGR_SWS_Msk) != RCC_CFGR_SWS_HSE);
+}
+
+void Init_EXTI(void){
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOCEN; // тактирование порта кнопки
+
+	/*
+	 * Button = PC13
+	 */
+
+	// Вывод МК должен быть настрое как вход.
+	// На плате вывод резитором притянут на землю. Замыкание происходит на питание
+
+	EXTI -> RTSR |= EXTI_RTSR_TR13;	// Прерывание по нарастанию импульса
+	EXTI -> FTSR |= EXTI_FTSR_TR13; // Прерывание по спаду импульса
+	EXTI -> PR |= EXTI_PR_PR13;      //Сбрасываем флаг прерывания
+	EXTI -> IMR |= EXTI_IMR_IM13; // Прерывание 13 включено
+
+	NVIC_EnableIRQ(EXTI15_10_IRQHandler);
+
+}
+
+int main(void)
+{
+	SysClock_Init();
+	while (1)
+	{
+
+	}
+
+}

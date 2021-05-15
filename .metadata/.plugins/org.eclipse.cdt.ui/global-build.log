@@ -1,0 +1,58 @@
+15:06:46 **** Incremental Build of configuration Debug for project STM32F413ZH_external interrupt ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F413xx -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "STM32F413ZH_external interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Job\GIT\Stm32_Project\STM32F413ZH_external interrupt\STM32F413ZHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F413ZH_external interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F413ZH_external interrupt.elf
+ 
+arm-none-eabi-objdump -h -S  STM32F413ZH_external\ interrupt.elf  > "STM32F413ZH_external interrupt.list"
+arm-none-eabi-objcopy  -O binary  STM32F413ZH_external\ interrupt.elf  "STM32F413ZH_external interrupt.bin"
+arm-none-eabi-size   STM32F413ZH_external\ interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1120	     12	   1572	   2704	    a90	STM32F413ZH_external interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F413ZH_external interrupt.list
+Finished building: STM32F413ZH_external interrupt.bin
+ 
+ 
+15:07:04 **** Incremental Build of configuration Debug for project STM32F413ZH_external interrupt ****
+make -j4 all 
+arm-none-eabi-size   STM32F413ZH_external\ interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1120	     12	   1572	   2704	    a90	STM32F413ZH_external interrupt.elf
+Finished building: default.size.stdout
+ 
+15:15:49 **** Incremental Build of configuration Debug for project STM32F413ZH_external interrupt ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F413xx -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "STM32F413ZH_external interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Job\GIT\Stm32_Project\STM32F413ZH_external interrupt\STM32F413ZHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F413ZH_external interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F413ZH_external interrupt.elf
+ 
+arm-none-eabi-objdump -h -S  STM32F413ZH_external\ interrupt.elf  > "STM32F413ZH_external interrupt.list"
+arm-none-eabi-objcopy  -O binary  STM32F413ZH_external\ interrupt.elf  "STM32F413ZH_external interrupt.bin"
+arm-none-eabi-size   STM32F413ZH_external\ interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1136	     12	   1572	   2720	    aa0	STM32F413ZH_external interrupt.elf
+Finished building: default.size.stdout
+Finished building: STM32F413ZH_external interrupt.list
+ 
+Finished building: STM32F413ZH_external interrupt.bin
+ 
+ 
+15:22:20 **** Incremental Build of configuration Debug for project STM32F413ZH_external interrupt ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F413xx -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "STM32F413ZH_external interrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Job\GIT\Stm32_Project\STM32F413ZH_external interrupt\STM32F413ZHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F413ZH_external interrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F413ZH_external interrupt.elf
+ 
+arm-none-eabi-objdump -h -S  STM32F413ZH_external\ interrupt.elf  > "STM32F413ZH_external interrupt.list"
+arm-none-eabi-objcopy  -O binary  STM32F413ZH_external\ interrupt.elf  "STM32F413ZH_external interrupt.bin"
+arm-none-eabi-size   STM32F413ZH_external\ interrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1148	     12	   1572	   2732	    aac	STM32F413ZH_external interrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F413ZH_external interrupt.bin
+Finished building: STM32F413ZH_external interrupt.list
+ 
+ 
