@@ -1,0 +1,114 @@
+// STM32F413ZH_SleepModeStendby_ExternalInterrupt
+#include "main.h"
+
+void SysClock_Init(void) {
+	RCC->CR   |= RCC_CR_HSEON;
+	RCC->CFGR |= RCC_CFGR_SW_HSE;
+	while((RCC->CFGR & RCC_CFGR_SWS_Msk) != RCC_CFGR_SWS_HSE);
+}
+
+void Init_EXTI(void){
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOCEN; // тактирование порта кнопки
+	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
+
+	/*
+	 * Button = PC13
+	 */
+	// Вывод МК должен быть настрое как вход.
+	// На плате вывод резитором притянут на земле. Замыкание происходит на питание
+
+	SYSCFG->EXTICR[3] |= SYSCFG_EXTICR4_EXTI13_PC; // ST -- !ПИДАРАСЫ!!!
+
+	//EXTI -> RTSR |= EXTI_RTSR_TR13;	// Прерывание по нарастанию импульса
+	EXTI -> FTSR |= EXTI_FTSR_TR13; // Прерывание по спаду импульса
+
+	EXTI -> IMR |= EXTI_IMR_IM13; // Прерывание 13 включено
+
+	NVIC_EnableIRQ(EXTI15_10_IRQn); // Разрешение прерывания
+
+}
+
+void Init_LowPower_Stendby (void){
+
+
+	RCC->APB1ENR |= RCC_APB1ENR_PWREN;
+
+	PWR -> CSR |= PWR_CSR_EWUP1; //A0
+	PWR -> CSR |= PWR_CSR_EWUP2; //C0
+	//PWR -> CSR |= PWR_CSR_EWUP3; //C1
+
+	PWR->CR |= PWR_CR_CWUF;
+	PWR->CR |= PWR_CR_PDDS;
+	SCB->SCR |= (1<<SCB_SCR_SLEEPDEEP_Pos);
+	SCB->SCR |= (1<<SCB_SCR_SLEEPONEXIT_Pos);
+
+	while (PWR->CR & (PWR_CR_CWUF));
+
+	__WFI();
+}
+ void Init_LowPower_StopMode (void){
+
+	 RCC->APB1ENR |= RCC_APB1ENR_PWREN;
+
+	 PWR -> CSR |= PWR_CSR_EWUP1; //A0
+
+	 SCB->SCR |= (1<<SCB_SCR_SLEEPDEEP_Pos);
+	 SCB->SCR |= (1<<SCB_SCR_SLEEPONEXIT_Pos);
+	 PWR->CR |= PWR_CR_LPDS;
+	 PWR->CR &= ~PWR_CR_PDDS;
+
+	 while (PWR->CR & (PWR_CR_CWUF));
+
+	 __WFI();
+ }
+
+int main(void)
+{
+	SysClock_Init();
+
+	GPIOA -> MODER = 0xffffffff;
+	GPIOB -> MODER = 0xffffffff;
+	GPIOC -> MODER = 0xffffffff;
+	GPIOD -> MODER = 0xffffffff;
+	GPIOE -> MODER = 0xffffffff;
+	GPIOF -> MODER = 0xffffffff;
+	GPIOH -> MODER = (1<<0);
+
+	RCC ->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
+	GPIOB -> MODER |= GPIO_MODER_MODER14_0;
+	//GPIOB -> ODR |= GPIO_ODR_OD14;
+
+	GPIOB -> MODER |= GPIO_MODER_MODER7_0;
+	//GPIOB -> ODR |= GPIO_ODR_OD7;
+
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+
+	GPIOA -> PUPDR |= GPIO_PUPDR_PUPD0_1;
+	GPIOA -> PUPDR |= GPIO_PUPDR_PUPD0_1;
+
+	GPIOC -> PUPDR |= GPIO_PUPDR_PUPD0_1;
+	GPIOC -> PUPDR |= GPIO_PUPDR_PUPD0_1;
+
+	if(GPIOA->IDR&GPIO_IDR_ID0){
+		GPIOB -> ODR |= GPIO_ODR_OD14;
+		uint32_t counter=0;
+		while(counter<100000){counter++;}
+	}
+
+	if(GPIOC->IDR&GPIO_IDR_ID0){
+		GPIOB -> ODR |= GPIO_ODR_OD7;
+		uint32_t counter=0;
+		while(counter<100000){counter++;}
+	}
+
+
+	//Init_EXTI();
+	Init_LowPower_Stendby();
+
+	while (1)
+	{
+
+	}
+
+}

@@ -1,8 +1,12 @@
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
 LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=win32
-configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_24LC64 Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_external interrupt Debug
+configDescList=org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F401RE_sleep_mode Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_24LC64 Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_Sleep_mode Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_external interrupt Debug,org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413zh_SleepModeStendby_ExternalInterrupt Debug
 eclipse.preferences.version=1
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F401RE_sleep_mode\ Debug/activeLaunchMode=run
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F401RE_sleep_mode\ Debug/activeLaunchTarget=null\:---
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_24LC64\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_24LC64\ Debug/activeLaunchTarget=null\:---
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_Sleep_mode\ Debug/activeLaunchMode=run
 org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413ZH_external\ interrupt\ Debug/activeLaunchMode=debug
+org.eclipse.cdt.dsf.gdb.gdbRemotedescriptorType\:STM32F413zh_SleepModeStendby_ExternalInterrupt\ Debug/activeLaunchMode=run

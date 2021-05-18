@@ -1,0 +1,20 @@
+10:51:09 **** Incremental Build of configuration Debug for project STM32F413zh_SleepModeStendby_ExternalInterrupt ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F413xx -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "STM32F413zh_SleepModeStendby_ExternalInterrupt.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Job\GIT\Stm32_Project\STM32F413zh_SleepModeStendby_ExternalInterrupt\STM32F413ZHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F413zh_SleepModeStendby_ExternalInterrupt.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: STM32F413zh_SleepModeStendby_ExternalInterrupt.elf
+ 
+arm-none-eabi-objdump -h -S  STM32F413zh_SleepModeStendby_ExternalInterrupt.elf  > "STM32F413zh_SleepModeStendby_ExternalInterrupt.list"
+arm-none-eabi-objcopy  -O binary  STM32F413zh_SleepModeStendby_ExternalInterrupt.elf  "STM32F413zh_SleepModeStendby_ExternalInterrupt.bin"
+arm-none-eabi-size   STM32F413zh_SleepModeStendby_ExternalInterrupt.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1560	  49100	   1572	  52232	   cc08	STM32F413zh_SleepModeStendby_ExternalInterrupt.elf
+Finished building: default.size.stdout
+ 
+Finished building: STM32F413zh_SleepModeStendby_ExternalInterrupt.bin
+Finished building: STM32F413zh_SleepModeStendby_ExternalInterrupt.list
+ 
+ 
+
+10:51:10 Build Finished. 0 errors, 0 warnings. (took 1s.568ms)
+

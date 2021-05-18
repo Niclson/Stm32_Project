@@ -191,6 +191,15 @@ void SysTick_Handler(void)
 
   /* USER CODE END SysTick_IRQn 1 */
 }
+void EXTI15_10_IRQHandler(void){
+	// обработчик прерывания.
+	// так как он работает на 5 пинов. нужно проверять откуда пришло нажание -- регистр PR
+	if((EXTI -> PR & (EXTI_PR_PR13))){
+		EXTI -> PR |= (EXTI_PR_PR13); // сброс, чтоб не завис
+	}
+
+		return;
+}
 
 /******************************************************************************/
 /* STM32F4xx Peripheral Interrupt Handlers                                    */

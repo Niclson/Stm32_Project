@@ -1,4 +1,0 @@
-stm32f413zh_24lc64.c:5:6:Eeprom_24lc64_Transmit_Byte	24	static
-stm32f413zh_24lc64.c:22:9:Eeprom_24lc64_Read_Byte	24	static
-stm32f413zh_24lc64.c:41:6:Eeprom_24lc64_Transmit_32byte_massive	24	static
-stm32f413zh_24lc64.c:59:6:Eeprom_24lc64_Read_massive_byte	24	static

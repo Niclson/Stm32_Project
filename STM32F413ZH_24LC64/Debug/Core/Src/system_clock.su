@@ -1,3 +1,0 @@
-system_clock.c:8:6:SysClock_Init	4	static
-system_clock.c:16:6:SysClock_PeriphEnable	4	static
-system_clock.c:23:9:SysClock_GetFreq	24	static
