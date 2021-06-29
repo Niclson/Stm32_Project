@@ -1,0 +1,20 @@
+17:40:36 **** Incremental Build of configuration Debug for project MX25L3233F_flash_memory ****
+make -j4 all 
+arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F413xx -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
+arm-none-eabi-gcc -o "MX25L3233F_flash_memory.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Job\GIT\Stm32_Project\MX25L3233F_flash_memory\STM32F413ZHJX_FLASH.ld" --specs=nosys.specs -Wl,-Map="MX25L3233F_flash_memory.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Finished building target: MX25L3233F_flash_memory.elf
+ 
+arm-none-eabi-objdump -h -S  MX25L3233F_flash_memory.elf  > "MX25L3233F_flash_memory.list"
+arm-none-eabi-objcopy  -O binary  MX25L3233F_flash_memory.elf  "MX25L3233F_flash_memory.bin"
+arm-none-eabi-size   MX25L3233F_flash_memory.elf 
+   text	   data	    bss	    dec	    hex	filename
+   1448	     12	   1604	   3064	    bf8	MX25L3233F_flash_memory.elf
+Finished building: default.size.stdout
+Finished building: MX25L3233F_flash_memory.bin
+ 
+Finished building: MX25L3233F_flash_memory.list
+ 
+ 
+
+17:40:37 Build Finished. 0 errors, 0 warnings. (took 1s.116ms)
+

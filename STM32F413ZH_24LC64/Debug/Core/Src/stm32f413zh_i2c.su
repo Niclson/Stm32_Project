@@ -1,0 +1,4 @@
+stm32f413zh_i2c.c:3:6:I2C_StartBit	4	static
+stm32f413zh_i2c.c:8:6:I2C_StopBit	4	static
+stm32f413zh_i2c.c:13:6:I2C_Transmit_AddrSlave	16	static,ignoring_inline_asm
+stm32f413zh_i2c.c:31:6:I2C_Transmit_byte	16	static

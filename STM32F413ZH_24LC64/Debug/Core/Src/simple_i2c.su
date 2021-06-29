@@ -1,0 +1,5 @@
+simple_i2c.c:5:5:SimpleI2C_Init	32	static
+simple_i2c.c:52:5:SimpleI2C_StartComm	24	static
+simple_i2c.c:86:5:SimpleI2C_StopComm	16	static
+simple_i2c.c:95:5:SimpleI2C_SendByte	24	static
+simple_i2c.c:118:9:SimpleI2C_RecvByte	24	static

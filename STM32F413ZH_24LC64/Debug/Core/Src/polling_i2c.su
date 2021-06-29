@@ -1,0 +1,8 @@
+polling_i2c.c:3:5:PollingI2C_Init	32	static
+polling_i2c.c:51:12:PollingI2C_StartComm	32	static
+polling_i2c.c:81:12:PollingI2C_StopComm	16	static
+polling_i2c.c:95:5:PollingI2C_SendData	32	static
+polling_i2c.c:117:5:PollingI2C_SendByte	16	static
+polling_i2c.c:122:13:PollingI2C_Recv2Bytes	24	static,ignoring_inline_asm
+polling_i2c.c:163:5:PollingI2C_RecvData	32	static,ignoring_inline_asm
+polling_i2c.c:197:9:PollingI2C_RecvByte	24	static,ignoring_inline_asm

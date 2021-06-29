@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;MX25L3233F_flash_memory/Core/Src/stm32f413zh_spi&apos;" deleteContents="false" description="Delete resource &apos;MX25L3233F_flash_memory/Core/Src/stm32f413zh_spi&apos;" element1="/MX25L3233F_flash_memory/Core/Src/stm32f413zh_spi" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1623068384701"/>
+</session>

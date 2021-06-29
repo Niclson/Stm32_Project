@@ -1,0 +1,76 @@
+#include "stm32f413_spi.h"
+
+void Init_SPI_1 (void){
+
+	//NSS1: 		PA4, CN7_17(D24)
+	//MOSI1:		PA7, CN7_14(D11)
+	//MISO1:		PA6, CN7_12(D12)
+	//SCK1:			PA5, CN7_10(D13)
+
+
+
+	RCC -> APB2ENR |= RCC_APB2ENR_SPI1EN; // тактирование SPI
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOAEN; // тактирование порта А
+
+	//GPIOA -> MODER = ; // сброс регистра
+	GPIOA -> MODER |= GPIO_MODER_MODER4_1 | GPIO_MODER_MODER5_1 |
+					  GPIO_MODER_MODER6_1 | GPIO_MODER_MODER7_1; // Альтернативные функции
+	GPIOA -> OTYPER |= GPIO_OTYPER_OT4 | GPIO_OTYPER_OT5 | GPIO_OTYPER_OT7; // режим открытого стока
+	GPIOA -> PUPDR |= GPIO_PUPDR_PUPD4 | GPIO_PUPDR_PUPD5 |
+					  GPIO_PUPDR_PUPD6 | GPIO_PUPDR_PUPD7; // резисторная подтяжка вверх
+
+	GPIOA -> AFR[0] |= GPIO_AFRL_AFRL4_0 | GPIO_AFRL_AFRL4_2; // альтернативная функция AF5 на пине 4 порта А - NSS1
+	GPIOA -> AFR[0] |= GPIO_AFRL_AFRL7_0 | GPIO_AFRL_AFRL7_2; // альтернативная функция AF5 на пине 7 порта А - MOSI1
+	GPIOA -> AFR[0] |= GPIO_AFRL_AFRL6_0 | GPIO_AFRL_AFRL6_2; // альтернативная функция AF5 на пине 6 порта А - MISO1
+	GPIOA -> AFR[0] |= GPIO_AFRL_AFRL5_0 | GPIO_AFRL_AFRL5_2; // альтернативная функция AF5 на пине 5 порта А - SCK1
+
+	SPI1 -> CR1 |= SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0; //111: fPCLK/256
+	SPI1 -> CR1 &= ~( (SPI_CR1_CPHA) | (SPI_CR1_CPOL) ); // установка фронтов захвата
+	SPI1 -> CR1 |= SPI_CR1_SSM; // программное управлеие выводом NSS1
+	SPI1 -> CR1 |= SPI_CR1_SSI;
+	SPI1 -> CR1 |= SPI_CR1_MSTR; // настройка в режим МАСТЕР
+	//SPI1 -> CR1 &= ~1<<SPI_CR1_DFF; // настройка на 8-битный формат
+
+	SPI1 -> DR = 0xFA;
+
+
+}
+
+void Init_SPI_3 (void){
+	//MOSI3		PB5(135)(AF6) | PC12(113) 	   | PD6 (122)
+	//MISO3		PB4(134)(AF6) | PC11(112)      |
+	//SCK3		PB3(133)(AF6) | PB12(73)       | PC10(111)
+	//NSS3		PA4(40) (AF6) | PA15(110)(AF6) |
+
+	RCC -> APB1ENR |= RCC_APB1ENR_SPI3EN; // тактирование SPI3
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOBEN | RCC_AHB1ENR_GPIOAEN; // тактирование порта
+
+	//MOSI3		PB5(135)(AF6)
+	GPIOB -> MODER |= GPIO_MODER_MODER5_1; // 10: Alternate function mode
+	GPIOB -> AFR[0] |= GPIO_AFRL_AFRL5_1 | GPIO_AFRL_AFRL5_2; // (AF6)
+
+	//MISO3		PB4(134)
+	GPIOB -> MODER |= GPIO_MODER_MODER4_1; // 10: Alternate function mode
+	GPIOB -> AFR[0] |= GPIO_AFRL_AFRL4_1 | GPIO_AFRL_AFRL4_2; // (AF6)
+
+	//SCK3		PB3(133)(AF6)
+	GPIOB -> MODER |= GPIO_MODER_MODER3_1; // 10: Alternate function mode
+	GPIOB -> PUPDR |= GPIO_PUPDR_PUPD3_0; // подтяжка вверх
+	GPIOB -> AFR[0] |= GPIO_AFRL_AFRL3_1 | GPIO_AFRL_AFRL3_2; // (AF6)
+
+	//NSS3		PA4(40) (AF6)
+	GPIOA -> MODER |= GPIO_MODER_MODER4_1; // 10: Alternate function mode
+	GPIOA -> AFR[0] |= GPIO_AFRL_AFRL4_1 | GPIO_AFRL_AFRL4_2; // (AF6)
+
+
+
+	SPI3 -> CR1 |= SPI_CR1_BR_2 | SPI_CR1_BR_2 | SPI_CR1_BR_0; //111: fPCLK/256
+	SPI3 -> CR1 |= SPI_CR1_CPHA | SPI_CR1_CPOL; // фронты
+	SPI3 -> CR1 |= SPI_CR1_MSTR; // конфигурация мастер
+
+	SPI3 -> CR1 |= SPI_CR1_SPE; //вкл
+
+	SPI3 -> DR = 0xf5;
+
+
+}

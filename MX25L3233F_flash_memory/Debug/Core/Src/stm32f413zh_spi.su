@@ -1,0 +1,4 @@
+core_cm4.h:1688:22:__NVIC_EnableIRQ	16	static
+stm32f413zh_spi.c:3:6:Init_SPI_1	8	static
+stm32f413zh_spi.c:45:6:SPI1_Transmit	16	static
+stm32f413zh_spi.c:52:6:Init_SPI_3	4	static

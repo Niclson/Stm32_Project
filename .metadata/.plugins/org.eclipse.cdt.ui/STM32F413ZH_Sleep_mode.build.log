@@ -1,4 +1,4 @@
-15:04:26 **** Incremental Build of configuration Debug for project STM32F413ZH_Sleep_mode ****
+14:57:45 **** Build of configuration Debug for project STM32F413ZH_Sleep_mode ****
 make -j4 all 
 arm-none-eabi-gcc "../Core/Src/main.c" -mcpu=cortex-m4 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F413xx -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/main.d" -MT"Core/Src/main.o" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "Core/Src/main.o"
 arm-none-eabi-gcc -o "STM32F413ZH_Sleep_mode.elf" @"objects.list"   -mcpu=cortex-m4 -T"E:\Job\GIT\Stm32_Project\STM32F413ZH_Sleep_mode\STM32F413ZHTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="STM32F413ZH_Sleep_mode.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
@@ -8,13 +8,13 @@ arm-none-eabi-objdump -h -S  STM32F413ZH_Sleep_mode.elf  > "STM32F413ZH_Sleep_mo
 arm-none-eabi-objcopy  -O binary  STM32F413ZH_Sleep_mode.elf  "STM32F413ZH_Sleep_mode.bin"
 arm-none-eabi-size   STM32F413ZH_Sleep_mode.elf 
    text	   data	    bss	    dec	    hex	filename
-    968	     12	   1572	   2552	    9f8	STM32F413ZH_Sleep_mode.elf
+   1048	     12	   1572	   2632	    a48	STM32F413ZH_Sleep_mode.elf
 Finished building: default.size.stdout
- 
 Finished building: STM32F413ZH_Sleep_mode.list
 Finished building: STM32F413ZH_Sleep_mode.bin
  
  
+ 
 
-15:04:27 Build Finished. 0 errors, 0 warnings. (took 1s.669ms)
+14:57:46 Build Finished. 0 errors, 0 warnings. (took 1s.719ms)
 

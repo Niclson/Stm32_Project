@@ -1,0 +1,27 @@
+#include "stm32f413_spi.h"
+
+void Init_SPI_1 (void){
+
+	//NSS1: 		PA4, CN7_17(D24)
+	//MOSI1:		PA7, CN7_14(D11)
+	//MISO1:		PA6, CN7_12(D12)
+	//SCK1:			PA5, CN7_10(D13)
+
+	RCC -> APB2ENR |= RCC_APB2ENR_SPI1EN; // тактирование SPI
+	RCC -> AHB1ENR |= RCC_AHB1ENR_GPIOAEN; // тактирование порта А
+
+	GPIOA -> AFR |= GPIO_AFRH_AFRH4_0 | GPIO_AFRH_AFRH4_2; // альтернативная функция AF5 на пине 4 порта А - NSS1
+	GPIOA -> AFR |= GPIO_AFRH_AFRH7_0 | GPIO_AFRH_AFRH7_2; // альтернативная функция AF5 на пине 7 порта А - MOSI1
+	GPIOA -> AFR |= GPIO_AFRH_AFRH6_0 | GPIO_AFRH_AFRH6_2; // альтернативная функция AF5 на пине 6 порта А - MISO1
+	GPIOA -> AFR |= GPIO_AFRH_AFRH5_0 | GPIO_AFRH_AFRH5_2; // альтернативная функция AF5 на пине 5 порта А - SCK1
+
+	SPI1 -> CR1 |= SPI_CR1_BR_2 | SPI_CR1_BR_1 | SPI_CR1_BR_0; //111: fPCLK/256
+	SPI1 -> CR1 &= ~( (SPI_CR1_CPHA) | (SPI_CR1_CPOL) ); // установка фронтов захвата
+	SPI1 -> CR1 |= SPI_CR1_SSM; // программное управлеие выводом NSS1
+	SPI1 -> CR1 |= SPI_CR1_MSTR; // настройка в режим МАСТЕР
+	SPI1 -> CR1 |= SPI_CR1_DFF_Msk; // настройка на 8-битный формат
+
+	SPI1 -> DR = 0xFA;
+
+
+}
